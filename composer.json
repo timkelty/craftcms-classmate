@@ -1,0 +1,47 @@
+{
+  "name": "timkelty/craftcms-classmate",
+  "description": "HTML class helper",
+  "type": "craft-plugin",
+  "version": "0.1.0",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "classmate",
+    "tailwind"
+  ],
+  "support": {
+    "docs": "https://github.com/timkelty/craftcms-classmate/blob/master/README.md",
+    "issues": "https://github.com/timkelty/craftcms-classmate/issues"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tim Kelty",
+      "homepage": "http://github.com/timkelty"
+    }
+  ],
+  "require": {
+    "craftcms/cms": "^3.0.0"
+  },
+  "require-dev": {
+    "craftcms/cms": "^3.2.0",
+    "codeception/codeception": "^3.0",
+    "vlucas/phpdotenv": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "timkelty\\craftcms\\classmate\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Classmate",
+    "handle": "classmate",
+    "developer": "Tim Kelty",
+    "developerUrl": "http://github.com/timkelty",
+    "documentationUrl": "https://github.com/timkelty/craftcms-classmate/blob/master/README.md",
+    "changelogUrl": "https://raw.githubusercontent.com/timkelty/craftcms-classmate/master/CHANGELOG.md",
+    "class": "timkelty\\craftcms\\classmate\\Plugin"
+  }
+}
