@@ -2,12 +2,9 @@
 
 Classmate is here to help with HTML class composition and is especially useful when paired with a [utility-first](https://tailwindcss.com/docs/utility-first) css framework, such as [Tailwind CSS](http://tailwindcss.com/).
 
-My opinons about [Extracting component classes with `@apply`](https://tailwindcss.com/docs/extracting-components#extracting-component-classes-with-apply) are pretty well summed up by this tweet:
+My opinons about [Extracting component classes with `@apply`](https://tailwindcss.com/docs/extracting-components#extracting-component-classes-with-apply) are pretty well summed up by [this tweet](https://twitter.com/adamwathan/status/1308944904786268161):
 
-<div>
-  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Should you extract a component class in Tailwind with @​apply? 🤔<br><br>(Thanks <a href="https://twitter.com/klickreflex?ref_src=twsrc%5Etfw">@klickreflex</a> for the idea 😅) <a href="https://t.co/4x3X6F07gH">pic.twitter.com/4x3X6F07gH</a></p>&mdash; Adam Wathan (@adamwathan) <a href="https://twitter.com/adamwathan/status/1308944904786268161?ref_src=twsrc%5Etfw">September 24, 2020</a></blockquote>
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
+![Flowchart: "Should you extract a component class with @apply"](https://pbs.twimg.com/media/EipNW97WsAIl8QD?format=jpg&name=4096x4096)
 
 In short, I avoid `@apply` at all costs.
 
