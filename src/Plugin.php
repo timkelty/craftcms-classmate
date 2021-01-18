@@ -12,10 +12,6 @@ class Plugin extends \craft\base\Plugin
     {
         parent::init();
 
-        $this->setComponents([
-            'classmate' => Classmate::class,
-        ]);
-
         if (Craft::$app->request->getIsSiteRequest()) {
             Craft::$app->view->registerTwigExtension(new TwigExtension());
         }

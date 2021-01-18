@@ -1,5 +1,5 @@
 <?php
-namespace timkelty\craftcms\classmate\services;
+namespace timkelty\craftcms\classmate;
 
 use Craft;
 use craft\helpers\Html;
@@ -13,17 +13,6 @@ use yii\base\Component;
 use yii\caching\ChainedDependency;
 use yii\caching\FileDependency;
 use yii\caching\TagDependency;
-
-// API ideas
-// classmate.get('foo').add(classmate.get('bar'))
-// classmate.get('foo', 'bar')
-// classmate.get(['foo', 'bar'])
-// classmate.get('foo').get('bar')
-// classmate.get('foo').add('bar')
-// classmate.get('foo').remove('bar')
-// classmate.get('foo').filter(class => class starts with 'bar')
-// classmate.get('foo').filter(class => class matches '/bar/')
-// classmate.get('foo').map(class => "pre-${class}")
 
 class Classmate extends Component
 {
@@ -84,7 +73,7 @@ class Classmate extends Component
         return $this;
     }
 
-    public function matching($pattern, $inverse = false): self
+    public function matching(string $pattern, bool $inverse = false): self
     {
         $this->classList = $this->classList->filter(function ($class) use ($pattern, $inverse) {
             $match = preg_match($pattern, $class);
@@ -98,6 +87,24 @@ class Classmate extends Component
     public function notMatching($pattern): self
     {
         return $this->matching($pattern, true);
+    }
+
+    public function prefix(string $string): self
+    {
+        $this->classList = $this->classList->map(function ($class) use ($string) {
+            return "{$string}{$class}";
+        });
+
+        return $this;
+    }
+
+    public function suffix(string $string): self
+    {
+        $this->classList = $this->classList->map(function ($class) use ($string) {
+            return "{$class}{$string}";
+        });
+
+        return $this;
     }
 
     private function loadDefinitions(string $filePath): Collection
