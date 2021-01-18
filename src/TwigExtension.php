@@ -1,5 +1,5 @@
 <?php
-namespace timkelty\craftcms\classmate\TwigExtension;
+namespace timkelty\craftcms\classmate;
 
 use timkelty\craftcms\classmate\Plugin;
 use Twig\Extension\AbstractExtension;

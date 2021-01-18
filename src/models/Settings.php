@@ -1,5 +1,5 @@
 <?php
-namespace timkelty\classmate\models;
+namespace timkelty\craftcms\classmate\models;
 
 class Settings extends \craft\base\Model
 {
