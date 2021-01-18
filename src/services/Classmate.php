@@ -84,6 +84,22 @@ class Classmate extends Component
         return $this;
     }
 
+    public function matching($pattern, $inverse = false): self
+    {
+        $this->classList = $this->classList->filter(function ($class) use ($pattern, $inverse) {
+            $match = preg_match($pattern, $class);
+
+            return $inverse ? !$match : $match;
+        });
+
+        return $this;
+    }
+
+    public function notMatching($pattern): self
+    {
+        return $this->matching($pattern, true);
+    }
+
     private function loadDefinitions(string $filePath): Collection
     {
         if (!is_file($filePath)) {
