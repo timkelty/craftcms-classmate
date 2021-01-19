@@ -17,7 +17,7 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['foo', 'bar', 'baz'],
-            (new Classmate())->get('spaced')->asClasses()->all()
+            (new Classmate())->get('spaced')->asClasses()
         );
     }
 
@@ -25,7 +25,7 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['foo', 'bar', 'baz'],
-            (new Classmate())->get('array')->asClasses()->all()
+            (new Classmate())->get('array')->asClasses()
         );
     }
 
@@ -33,7 +33,7 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['foo', 'bar', 'baz', 'qux'],
-            (new Classmate())->get('mixed')->asClasses()->all()
+            (new Classmate())->get('mixed')->asClasses()
         );
     }
 
@@ -41,7 +41,7 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['foo', 'bar', 'baz', 'qux'],
-            (new Classmate())->get('messy')->asClasses()->all()
+            (new Classmate())->get('messy')->asClasses()
         );
     }
 
@@ -49,7 +49,7 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['foo', 'bar', 'baz', 'text-4xl', 'tracking-tight', 'mb-4'],
-            (new Classmate())->get('spaced', 'tailwind')->asClasses()->all()
+            (new Classmate())->get('spaced', 'tailwind')->asClasses()
         );
     }
 
@@ -57,7 +57,7 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['foo', 'bar', 'baz', 'qux', 'quux'],
-            (new Classmate())->get('spaced')->add('qux', 'quux')->asClasses()->all()
+            (new Classmate())->get('spaced')->add('qux', 'quux')->asClasses()
         );
     }
 
@@ -65,7 +65,7 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['bar'],
-            (new Classmate())->get('spaced')->remove('foo', 'baz')->asClasses()->all()
+            (new Classmate())->get('spaced')->remove('foo', 'baz')->asClasses()
         );
     }
 
@@ -73,12 +73,12 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['text-4xl'],
-            (new Classmate())->get('tailwind')->matching('/^text-/')->asClasses()->all()
+            (new Classmate())->get('tailwind')->matching('/^text-/')->asClasses()
         );
 
         $this->assertEquals(
             ['text-4xl', 'tracking-tight'],
-            (new Classmate())->get('tailwind')->notMatching('/^mb-/')->asClasses()->all()
+            (new Classmate())->get('tailwind')->notMatching('/^mb-/')->asClasses()
         );
     }
 
@@ -86,7 +86,7 @@ class ClassmateTest extends Unit
     {
         $this->assertEquals(
             ['md:text-4xl', 'md:tracking-tight', 'md:mb-4'],
-            (new Classmate())->get('tailwind')->prepend('md:')->asClasses()->all()
+            (new Classmate())->get('tailwind')->prepend('md:')->asClasses()
         );
     }
 

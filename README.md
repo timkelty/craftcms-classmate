@@ -172,9 +172,9 @@ Retrive classes of given `$keys` from your classmate file. Multiple keys will be
 {{ classmate.get('buttonBase', 'buttonLarge', 'buttonBlue') }}
 ```
 
-### `asClasses(): ClassList`
+### `asClasses(): array`
 
-Retrive the iterable `ClassList`. Duplicates and empty values are removed.
+Retrive an array of classes. Duplicates and empty values are removed.
 
 ```twig
 <div {{ attr({

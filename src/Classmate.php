@@ -68,17 +68,17 @@ class Classmate extends Component
     {
         $this->classList = $this->classList
             ->push(...$classes)
-            ->asClasses();
+            ->normalize();
 
         return $this;
     }
 
     public function remove(string ...$classes): self
     {
-        $toRemove = (new ClassList($classes))->asClasses();
+        $toRemove = (new ClassList($classes))->normalize();
         $this->classList = $this->classList->filter(function ($class) use ($toRemove) {
             return !$toRemove->contains($class);
-        })->asClasses();
+        })->normalize();
 
         return $this;
     }
@@ -89,7 +89,7 @@ class Classmate extends Component
             $match = preg_match($pattern, $class);
 
             return $inverse ? !$match : $match;
-        })->asClasses();
+        })->normalize();
 
         return $this;
     }
@@ -103,7 +103,7 @@ class Classmate extends Component
     {
         $this->classList = $this->classList->map(function ($class) use ($string) {
             return "{$string}{$class}";
-        })->asClasses();
+        })->normalize();
 
         return $this;
     }
@@ -112,7 +112,7 @@ class Classmate extends Component
     {
         $this->classList = $this->classList->map(function ($class) use ($string) {
             return "{$class}{$string}";
-        })->asClasses();
+        })->normalize();
 
         return $this;
     }
