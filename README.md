@@ -4,7 +4,7 @@ Classmate is here to help with HTML class composition and is especially useful w
 
 ### Before Classmate:
 
-`template.twig`
+#### `template.twig`
 
 ```html
 <h2 class="text-lg leading-6 font-medium text-gray-900 mb-3">
@@ -15,7 +15,7 @@ Classmate is here to help with HTML class composition and is especially useful w
 
 ### After Classmate:
 
-`template.twig`
+#### `template.twig`
 
 ```twig
 <h2
@@ -26,7 +26,7 @@ Classmate is here to help with HTML class composition and is especially useful w
 </h2>
 ```
 
-`classmate.json`
+#### `classmate.json`
 
 ```json
 {
@@ -54,6 +54,56 @@ Yes and no. It is true that the practice of extracting components with `@apply` 
 - Your resulting HTML remains all-utility. Onboarding a new developer to project, especially if they're already familiar with Tailwind or whatever framework, is much easier if they don't have to decipher a set of component classes.
 - Errors are more easily caught.
   - With an extracted component, misuse can happen easily and go unnoticed, e.g. a typo in your class attribute. With Classmate, when a class definition is missing, it is readily apparent to the developer.
+
+## Configuration
+
+Copy `./src/config.php` to `<yourProject>/config/classmate.php`.
+
+### `filePath`
+
+The location of your Classmate file. Aliases and environment variables are supported.
+Defaults to `@config/classmate.json`, but I suggest you put it alongside your pre-compiled frontend assets, e.g. `./src/css/classmate.json`
+
+If using Tailwind or PurgeCSS directly, you will also want to include this path. E.g.
+
+#### `tailwind.config.js`
+
+```js
+module.exports = {
+  purge: {
+    content: [
+      "./src/**/*.css",
+      "./src/**/*.js",
+      "./templates/**/*.*",
+      "./config/tailwind.json",
+    ],
+    options: {
+      safelist: [],
+    },
+  },
+};
+```
+
+## Classmate File
+
+Your Classmate file is a JSON file with a sinle object.
+The values can be space separated strings or arrays, or a combination of both.
+
+```json
+{
+  "heading1": "text-2xl font-bold",
+  "heading2": ["text-lg", "font-bold"],
+  "buttonBase": [
+    "text-center inline-flex items-center justify-center font-bold",
+    "rounded-full"
+  ],
+  "buttonWhite": "bg-white text-gray-900",
+  "buttonLg": "leading-none text-xl py-4 px-8",
+  "buttonSm": "leading-none text-sm py-2 px-4",
+  "centerX": "left-1/2 transform -translate-x-1/2",
+  "centerY": "top-1/2 transform -translate-y-1/2"
+}
+```
 
 ## Usage
 
