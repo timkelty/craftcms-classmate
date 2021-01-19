@@ -12,6 +12,16 @@ In short, I tend to avoid `@apply`.
 
 Classmate was created specifically for single element components (e.g. button, link, heading), where extracting to a template partial may be cumbersome and you still want to avoid `@apply`.
 
+### How is this better than @apply? Aren't we just moving problem elsewhere?
+
+Yes and no. It is true that the practice of extracting components with `@apply` is similar to defining classes in classmate JSON file. However, Classmate abstracts the definition on the backend (PHP), while `@apply` abstracts it as part of the front-end build. Advantages to this are:
+
+- No additional CSS bloat from component classes
+- No added compile time from `@apply`
+- Your resulting HTML remains all-utility. Onboarding a new developer to project, especially if they're already familiar with Tailwind or whatever framework, is much easier if they don't have to decipher a set of component classes.
+- Errors are more easily caught.
+  - With an extracted component, misuse can happen easily and go unnoticed, e.g. a typo in your class attribute. With Classmate, when a class definition is missing, it is readily apparent to the developer.
+
 ### Before Classmate:
 
 `template.twig`
@@ -43,6 +53,14 @@ Classmate was created specifically for single element components (e.g. button, l
   "myHeading": "text-lg leading-6 font-medium text-gray-900",
   "defaultLink": "text-orange-600 hover:text-orange-900"
 }
+```
+
+## Cache
+
+Retrival of the JSON file is cached, and invalidated by modifications to the file, so you really shouldn't have to worry much about invalidation. However, you can selectively clear the cache via the CP or with the CLI command:
+
+```bash
+./craft clear-caches/classmate-cache
 ```
 
 ## Usage
@@ -90,9 +108,81 @@ _Craft 3.6+ only_
 <a href="#" class="{{ classmate.get('defaultLink') }}">A link</a>
 ```
 
-### HTML
+## API
 
-### Isn't this just moving complexity from
+`classmate` is a chainable API, available as a global in your Twig templates.
+
+### `get(string ...$keys): Classmate`
+
+Retrive classes of given `$keys` from your classmate file. Multiple keys will be merged right to left.
+
+```twig
+{{ classmate.get('buttonBase', 'buttonLarge', 'buttonBlue') }}
+```
+
+### `asClasses(): ClassList`
+
+Retrive the iterable `ClassList`. Duplicates and empty values are removed.
+
+```twig
+<div {{ attr({
+  class: classmate.get('foo').asClasses()
+}) }}">
+```
+
+### `asAttributes(iterable $attributes = []): iterable`
+
+Retreive an `attr`-compatible iterable, with `class` set, merged into any passed `$attributes`.
+
+```twig
+<div {{ attr(classmate.get('foo').asAttributes({
+  id: 'buttonLarge'
+})) }}">
+```
+
+### `add(string ...$classes): Classmate`
+
+Add classes to the current `ClassList`.
+
+```twig
+{{ classmate.get('foo').add('mb-4') }}
+```
+
+### `remove(string ...$classes): Classmate`
+
+Remove classes to the current `ClassList`.
+
+```twig
+{{ classmate.get('foo').remove('mb-4') }}
+```
+
+### `matching(string $pattern): Classmate`
+
+Filter the current `ClassList`, keeping those that match `$pattern`.
+
+```twig
+{{ classmate.get('foo').matching('/^text-/') }}
+```
+
+### `notMatching(string $pattern): Classmate`
+
+Filter the current `ClassList`, removing those that match `$pattern`.
+
+```twig
+{{ classmate.get('foo').notMatching('/^mb-/') }}
+```
+
+### `prepend(string $string): Classmate`
+
+Prepend `$string` to each item in the `ClassList`.
+
+```twig
+{{ classmate.get('foo').prepend('md:') }}
+```
+
+### `append(string $string): Classmate`
+
+Append `$string` to each item in the `ClassList`.
 
 ## Requirements
 

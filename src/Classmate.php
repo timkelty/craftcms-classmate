@@ -99,7 +99,7 @@ class Classmate extends Component
         return $this->matching($pattern, true);
     }
 
-    public function prefix(string $string): self
+    public function prepend(string $string): self
     {
         $this->classList = $this->classList->map(function ($class) use ($string) {
             return "{$string}{$class}";
@@ -108,7 +108,7 @@ class Classmate extends Component
         return $this;
     }
 
-    public function suffix(string $string): self
+    public function append(string $string): self
     {
         $this->classList = $this->classList->map(function ($class) use ($string) {
             return "{$class}{$string}";

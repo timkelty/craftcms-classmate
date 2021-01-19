@@ -82,11 +82,11 @@ class ClassmateTest extends Unit
         );
     }
 
-    public function testItCanPrefixClasses(): void
+    public function testItCanPrependClasses(): void
     {
         $this->assertEquals(
             ['md:text-4xl', 'md:tracking-tight', 'md:mb-4'],
-            (new Classmate())->get('tailwind')->prefix('md:')->asClasses()->all()
+            (new Classmate())->get('tailwind')->prepend('md:')->asClasses()->all()
         );
     }
 
