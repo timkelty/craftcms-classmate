@@ -10,7 +10,7 @@ My opinons about [Extracting component classes with `@apply`](https://tailwindcs
 
 In short, I tend to avoid `@apply`.
 
-**Classmate was created specifically for single element components (e.g. button, link, heading), where extracting to a template partial may be cumbersome and you still want to avoid `@apply`.**
+_Classmate was created specifically for single element components (e.g. button, link, heading), where extracting to a template partial may be cumbersome and you still want to avoid `@apply`._
 
 ### How is this better than @apply? Aren't we just moving problem elsewhere?
 
