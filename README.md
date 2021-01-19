@@ -4,7 +4,7 @@ Classmate is here to help with HTML class composition and is especially useful w
 
 ### Before Classmate:
 
-#### `template.twig`
+`template.twig`
 
 ```html
 <h2 class="text-lg leading-6 font-medium text-gray-900 mb-3">
@@ -15,7 +15,7 @@ Classmate is here to help with HTML class composition and is especially useful w
 
 ### After Classmate:
 
-#### `template.twig`
+`template.twig`
 
 ```twig
 <h2
@@ -26,7 +26,7 @@ Classmate is here to help with HTML class composition and is especially useful w
 </h2>
 ```
 
-#### `classmate.json`
+`classmate.json`
 
 ```json
 {
@@ -66,7 +66,7 @@ Defaults to `@config/classmate.json`, but I suggest you put it alongside your pr
 
 If using Tailwind or PurgeCSS directly, you will also want to include this path. E.g.
 
-#### `tailwind.config.js`
+`tailwind.config.js`
 
 ```js
 module.exports = {
