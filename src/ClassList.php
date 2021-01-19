@@ -11,7 +11,17 @@ class ClassList extends Collection
 {
     public function __toString(): string
     {
-        return Html::encode($this->join(' '));
+        return Html::encode($this->asClasses()->join(' '));
+    }
+
+    public function asClasses(): self
+    {
+        return $this->flatMap(function ($class) {
+            return explode(' ', $class);
+        })
+        ->unique()
+        ->filter()
+        ->values();
     }
 
     public function asAttributes(iterable $attributes = []): iterable
@@ -20,14 +30,5 @@ class ClassList extends Collection
         $attributes->put('class', $this->all());
 
         return $attributes->all();
-    }
-
-    public function normalize(): self
-    {
-        return $this->flatMap(function ($class) {
-            return explode(' ', $class);
-        })
-        ->unique()
-        ->filter();
     }
 }
