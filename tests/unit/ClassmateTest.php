@@ -4,9 +4,8 @@ namespace timkelty\classmatetests\unit;
 
 use Codeception\Test\Unit;
 use craft\helpers\Html;
-use timkelty\craftcms\classmate\ClassList;
 use timkelty\craftcms\classmate\Classmate;
-use timkelty\craftcms\classmate\Plugin;
+use timkelty\craftcms\classmate\exceptions\KeyNotFoundException;
 use UnitTester;
 
 class ClassmateTest extends Unit
@@ -113,5 +112,11 @@ class ClassmateTest extends Unit
             ' id="foo" class="foo bar baz qux"',
             Html::renderTagAttributes($value)
         );
+    }
+
+    public function testItThrowsOnMissingKeys(): void
+    {
+        $this->expectException(KeyNotFoundException::class);
+        (new Classmate())->get('spaced', 'missing');
     }
 }

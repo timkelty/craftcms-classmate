@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use timkelty\craftcms\classmate\ClassList;
 use timkelty\craftcms\classmate\exceptions\FileNotFoundException;
 use timkelty\craftcms\classmate\exceptions\JsonDecodeException;
+use timkelty\craftcms\classmate\exceptions\KeyNotFoundException;
 use timkelty\craftcms\classmate\models\Settings;
 use timkelty\craftcms\classmate\Plugin;
 use yii\base\Component;
@@ -58,7 +59,16 @@ class Classmate extends Component
 
     public function get(string ...$keys): self
     {
-        $classes = $this->definitions->only($keys)->flatten();
+        $classes = (new Collection($keys))->map(function ($key) {
+            $value = $this->definitions->get($key);
+
+            if ($value === null) {
+                throw new KeyNotFoundException($key);
+            }
+
+            return $value;
+        })->flatten()->all();
+
         $this->create()->add(...$classes);
 
         return $this;
