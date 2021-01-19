@@ -1,0 +1,10 @@
+name: Run Tests
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v5
+      - run: docker-compose up -d
+      - uses: joelwmale/codeception-action@1.0.0
