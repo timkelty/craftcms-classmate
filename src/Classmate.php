@@ -86,6 +86,16 @@ class Classmate extends Component
     public function remove(string ...$classes): self
     {
         $toRemove = (new ClassList($classes))->normalize();
+
+        $missingClasses = $toRemove->filter(function ($class) {
+            return !$this->classList->contains($class);
+        });
+
+        if ($missingClasses->isNotEmpty()) {
+            // TODO: throw, perhaps with a $strict config?
+            Craft::warning("Attempting to remove non-existant classes: {$missingClasses->join(', ')}", __METHOD__);
+        }
+
         $this->classList = $this->classList->filter(function ($class) use ($toRemove) {
             return !$toRemove->contains($class);
         })->normalize();

@@ -117,6 +117,6 @@ class ClassmateTest extends Unit
     public function testItThrowsOnMissingKeys(): void
     {
         $this->expectException(KeyNotFoundException::class);
-        (new Classmate())->get('spaced', 'missing');
+        (new Classmate())->get('missing');
     }
 }
