@@ -9,5 +9,6 @@ jobs:
         with:
           php_version: 7.4
           version: 1
+          args: --ignore-platform-reqs
       - run: docker-compose up -d
       - uses: joelwmale/codeception-action@1.0.0
