@@ -269,3 +269,7 @@ classmate.get('foo').map(c => "md:#{c}")
 ```
 
 While this works for Twig's `map`, `filter`, and `reduce` filters, it doesn't work here. See https://github.com/twigphp/Twig/issues/3402
+
+### CP settings
+
+I don't really have a desire for this, but happy to accept a PR if someone wants to add this.
