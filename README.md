@@ -254,3 +254,22 @@ Retrival of the JSON file is cached, and invalidated by modifications to the fil
 ```bash
 composer require timkelty/craftcms-classmate
 ```
+
+## Roadmap
+
+### Arrow Functions
+
+I'd love to allow the use of arrow functions, but I'm not sure how to get this to work in Twig.
+
+For example, instead of our `matches` and `prepend` methods, I'd rather have this work:
+
+```twig
+classmate.get('foo').filter(c => c starts with 'f')
+classmate.get('foo').filter(c => c matches '/^f/')
+classmate.get('foo').map(c => "md:#{c}")
+```
+
+While this works for Twig's `map`, `filter`, and `reduce` filters, it doens't seem to work here.
+I've asked @fabpot, but haven't heard back yet: https://twitter.com/timkelty/status/1351238578743996422
+
+Any insight is apprecaited!
