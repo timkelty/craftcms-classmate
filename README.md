@@ -2,26 +2,6 @@
 
 Classmate is here to help with HTML class composition and is especially useful when paired with a [utility-first](https://tailwindcss.com/docs/utility-first) css framework, such as [Tailwind CSS](http://tailwindcss.com/).
 
-## Why?
-
-My opinons about [Extracting component classes with `@apply`](https://tailwindcss.com/docs/extracting-components#extracting-component-classes-with-apply) are pretty well summed up by [this tweet](https://twitter.com/adamwathan/status/1308944904786268161):
-
-![Flowchart: "Should you extract a component class with @apply"](https://pbs.twimg.com/media/EipNW97WsAIl8QD?format=jpg&name=4096x4096)
-
-In short, I tend to avoid `@apply`.
-
-_Classmate was created specifically for single element components (e.g. button, link, heading), where extracting to a template partial may be cumbersome and you still want to avoid `@apply`._
-
-### How is this better than @apply? Aren't we just moving problem elsewhere?
-
-Yes and no. It is true that the practice of extracting components with `@apply` is similar to defining classes in classmate JSON file. However, Classmate abstracts the definition on the backend (PHP), while `@apply` abstracts it as part of the front-end build. Advantages to this are:
-
-- No additional CSS bloat from component classes
-- No added compile time from `@apply`
-- Your resulting HTML remains all-utility. Onboarding a new developer to project, especially if they're already familiar with Tailwind or whatever framework, is much easier if they don't have to decipher a set of component classes.
-- Errors are more easily caught.
-  - With an extracted component, misuse can happen easily and go unnoticed, e.g. a typo in your class attribute. With Classmate, when a class definition is missing, it is readily apparent to the developer.
-
 ### Before Classmate:
 
 `template.twig`
@@ -55,13 +35,25 @@ Yes and no. It is true that the practice of extracting components with `@apply` 
 }
 ```
 
-## Cache
+## Why?
 
-Retrival of the JSON file is cached, and invalidated by modifications to the file, so you really shouldn't have to worry much about invalidation. However, you can selectively clear the cache via the CP or with the CLI command:
+My opinons about [Extracting component classes with `@apply`](https://tailwindcss.com/docs/extracting-components#extracting-component-classes-with-apply) are pretty well summed up by [this tweet](https://twitter.com/adamwathan/status/1308944904786268161):
 
-```bash
-./craft clear-caches/classmate-cache
-```
+![Flowchart: "Should you extract a component class with @apply"](https://pbs.twimg.com/media/EipNW97WsAIl8QD?format=jpg&name=4096x4096)
+
+In short, I tend to avoid `@apply` when possible.
+
+_Classmate was created specifically for single element components (e.g. button, link, heading), where extracting to a template partial may be cumbersome and you still want to avoid `@apply`._
+
+**How is this better than @apply? Aren't we just moving problem elsewhere?**
+
+Yes and no. It is true that the practice of extracting components with `@apply` is similar to defining classes in classmate JSON file. However, Classmate abstracts the definition on the backend (PHP), while `@apply` abstracts it as part of the front-end build. Advantages to this are:
+
+- No additional CSS bloat from component classes
+- No added compile time from `@apply`
+- Your resulting HTML remains all-utility. Onboarding a new developer to project, especially if they're already familiar with Tailwind or whatever framework, is much easier if they don't have to decipher a set of component classes.
+- Errors are more easily caught.
+  - With an extracted component, misuse can happen easily and go unnoticed, e.g. a typo in your class attribute. With Classmate, when a class definition is missing, it is readily apparent to the developer.
 
 ## Usage
 
@@ -183,6 +175,14 @@ Prepend `$string` to each item in the `ClassList`.
 ### `append(string $string): Classmate`
 
 Append `$string` to each item in the `ClassList`.
+
+## Cache
+
+Retrival of the JSON file is cached, and invalidated by modifications to the file, so you really shouldn't have to worry much about invalidation. However, you can selectively clear the cache via the CP or with the CLI command:
+
+```bash
+./craft clear-caches/classmate-cache
+```
 
 ## Requirements
 
