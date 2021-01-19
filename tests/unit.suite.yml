@@ -1,6 +1,3 @@
-actor: UnitTester
 modules:
   enabled:
-    - Asserts
     - \craft\test\Craft
-    - \Helper\Unit
