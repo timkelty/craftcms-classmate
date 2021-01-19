@@ -6,8 +6,11 @@ use yii\base\Exception;
 
 class FileNotFoundException extends Exception
 {
-    protected $filePath;
+    protected string $filePath;
 
+    /**
+     * @inheritdoc
+     */
     public function __construct(string $filePath, ?string $message = null)
     {
         $this->filePath = $filePath;
@@ -16,6 +19,9 @@ class FileNotFoundException extends Exception
         parent::__construct($message);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getName(): string
     {
         return 'File not found exception';

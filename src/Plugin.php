@@ -2,8 +2,11 @@
 namespace timkelty\craftcms\classmate;
 
 use Craft;
+use craft\console\Request as ConsoleRequest;
 use craft\events\RegisterCacheOptionsEvent;
 use craft\utilities\ClearCaches;
+use craft\web\Request as WebRequest;
+use craft\web\View;
 use timkelty\craftcms\classmate\Classmate;
 use timkelty\craftcms\classmate\models\Settings;
 use timkelty\craftcms\classmate\TwigExtension;
@@ -11,12 +14,21 @@ use yii\base\Event;
 
 class Plugin extends \craft\base\Plugin
 {
-    public function init()
+    /**
+     * @inheritdoc
+     */
+    public function init(): void
     {
         parent::init();
 
-        if (Craft::$app->request->getIsSiteRequest()) {
-            Craft::$app->view->registerTwigExtension(new TwigExtension());
+        /** @var WebRequest|ConsoleRequest */
+        $request = Craft::$app->getRequest();
+
+        if ($request->getIsSiteRequest()) {
+
+            /** @var View */
+            $view = Craft::$app->getView();
+            $view->registerTwigExtension(new TwigExtension());
         }
 
         Event::on(
@@ -32,7 +44,10 @@ class Plugin extends \craft\base\Plugin
         );
     }
 
-    protected function createSettingsModel()
+    /**
+     * @inheritdoc
+     */
+    protected function createSettingsModel(): Settings
     {
         return new Settings();
     }

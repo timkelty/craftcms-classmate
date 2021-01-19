@@ -1,0 +1,8 @@
+parameters:
+	level: 6
+	checkMissingIterableValueType: false
+	paths:
+		- src
+	bootstrapFiles:
+		- %currentWorkingDirectory%/vendor/yiisoft/yii2/Yii.php
+		- %currentWorkingDirectory%/vendor/craftcms/cms/src/Craft.php

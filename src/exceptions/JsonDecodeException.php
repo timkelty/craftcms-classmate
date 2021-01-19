@@ -8,6 +8,9 @@ class JsonDecodeException extends Exception
 {
     protected string $contents;
 
+    /**
+     * @inheritdoc
+     */
     public function __construct(string $contents, ?string $message = null)
     {
         $this->contents = $contents;
@@ -16,6 +19,9 @@ class JsonDecodeException extends Exception
         parent::__construct($message);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getName(): string
     {
         return 'JSON decode exception';

@@ -7,6 +7,9 @@ use Twig\Extension\GlobalsInterface;
 
 class TwigExtension extends AbstractExtension implements GlobalsInterface
 {
+    /**
+     * @inheritdoc
+     */
     public function getGlobals(): array
     {
         return [

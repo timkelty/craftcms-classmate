@@ -2,12 +2,12 @@
 namespace timkelty\craftcms\classmate;
 
 use Craft;
-use craft\helpers\Html;
 use craft\helpers\Json;
 use Illuminate\Support\Collection;
 use timkelty\craftcms\classmate\ClassList;
 use timkelty\craftcms\classmate\exceptions\FileNotFoundException;
 use timkelty\craftcms\classmate\exceptions\JsonDecodeException;
+use timkelty\craftcms\classmate\models\Settings;
 use timkelty\craftcms\classmate\Plugin;
 use yii\base\Component;
 use yii\caching\ChainedDependency;
@@ -19,9 +19,14 @@ class Classmate extends Component
     private Collection $definitions;
     private ClassList $classList;
 
-    public function init()
+    /**
+     * @inheritdoc
+     */
+    public function init(): void
     {
+        /** @var Settings */
         $settings = Plugin::getInstance()->getSettings();
+
         $filePath = Craft::parseEnv($settings->filePath);
         $this->definitions = $this->loadDefinitions($filePath);
         $this->create();
@@ -32,14 +37,16 @@ class Classmate extends Component
         return (string) $this->classList;
     }
 
-    public function __call($method, $args)
+    public function __call($name, $args)
     {
-        if (method_exists($this->classList, $method)) {
-            return $this->classList->$method(...$args);
+        if (method_exists($this->classList, $name)) {
+            return $this->classList->$name(...$args);
         }
+
+        return parent::__call($name, $args);
     }
 
-    public function create()
+    public function create(): self
     {
         $this->classList = new ClassList();
 
@@ -84,7 +91,7 @@ class Classmate extends Component
         return $this;
     }
 
-    public function notMatching($pattern): self
+    public function notMatching(string $pattern): self
     {
         return $this->matching($pattern, true);
     }
@@ -107,7 +114,7 @@ class Classmate extends Component
         return $this;
     }
 
-    public static function invalidateCache()
+    public static function invalidateCache(): void
     {
         TagDependency::invalidate(Craft::$app->getCache(), __CLASS__);
         Craft::info('Classmate cache cleared', __METHOD__);
