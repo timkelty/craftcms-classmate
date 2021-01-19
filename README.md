@@ -56,6 +56,7 @@ Yes and no. It is true that the practice of extracting components with `@apply` 
 - Your resulting HTML remains all-utility. Onboarding a new developer to project, especially if they're already familiar with Tailwind or whatever framework, is much easier if they don't have to decipher a set of component classes.
 - Errors are more easily caught.
   - With an extracted component, misuse can happen easily and go unnoticed, e.g. a typo in your class attribute. With Classmate, when a class definition is missing, it is readily apparent to the developer.
+- Config can be shared with frontend JS.
 
 ## Configuration
 
@@ -105,6 +106,13 @@ The values can be space separated strings or arrays, or a combination of both.
   "centerX": "left-1/2 transform -translate-x-1/2",
   "centerY": "top-1/2 transform -translate-y-1/2"
 }
+```
+
+Since this is a simple JSON file, it is easily consumable by Javascript, too!
+
+```js
+import classmate from "../../config/classmate.json";
+document.querySelector("body").class = classmate.body;
 ```
 
 ## Usage
