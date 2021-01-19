@@ -4,6 +4,9 @@ namespace timkelty\craftcms\classmate\exceptions;
 
 use yii\base\Exception;
 
+/**
+ * @inheritdoc
+ */
 class JsonDecodeException extends Exception
 {
     protected string $contents;

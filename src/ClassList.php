@@ -4,6 +4,9 @@ namespace timkelty\craftcms\classmate;
 use craft\helpers\Html;
 use Illuminate\Support\Collection;
 
+/**
+ * @inheritdoc
+ */
 class ClassList extends Collection
 {
     public function __toString(): string

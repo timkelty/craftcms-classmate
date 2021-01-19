@@ -12,6 +12,9 @@ use timkelty\craftcms\classmate\models\Settings;
 use timkelty\craftcms\classmate\TwigExtension;
 use yii\base\Event;
 
+/**
+ * @inheritdoc
+ */
 class Plugin extends \craft\base\Plugin
 {
     /**

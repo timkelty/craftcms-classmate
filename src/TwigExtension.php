@@ -5,6 +5,9 @@ use timkelty\craftcms\classmate\Classmate;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 
+/**
+ * @inheritdoc
+ */
 class TwigExtension extends AbstractExtension implements GlobalsInterface
 {
     /**

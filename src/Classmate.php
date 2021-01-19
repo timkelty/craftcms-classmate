@@ -14,6 +14,9 @@ use yii\caching\ChainedDependency;
 use yii\caching\FileDependency;
 use yii\caching\TagDependency;
 
+/**
+ * @inheritdoc
+ */
 class Classmate extends Component
 {
     private Collection $definitions;
