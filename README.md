@@ -1,5 +1,7 @@
 # Classmate for Craft CMS 3
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=A5FPKHYV4GRTC)
+
 Classmate is here to help with HTML class composition and is especially useful when paired with a [utility-first](https://tailwindcss.com/docs/utility-first) css framework, such as [Tailwind CSS](http://tailwindcss.com/).
 
 ### Before Classmate:
