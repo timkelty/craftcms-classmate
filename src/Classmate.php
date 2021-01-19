@@ -107,6 +107,12 @@ class Classmate extends Component
         return $this;
     }
 
+    public static function invalidateCache()
+    {
+        TagDependency::invalidate(Craft::$app->getCache(), __CLASS__);
+        Craft::info('Classmate cache cleared', __METHOD__);
+    }
+
     private function loadDefinitions(string $filePath): Collection
     {
         if (!is_file($filePath)) {
