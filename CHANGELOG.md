@@ -27,3 +27,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 
 - `ClassList::asClasses` now returns an array, so it is compatible with the `attr` filter and function.
+
+## [1.0.3] - 2021-01-19
+
+### Changed
+
+- Log a warning when calling `remove` to remove a non-existent class.
+- Throw exception when trying to get a non-existent key.
+
+## [1.0.4] - 2021-01-20
+
+### Fixed
+
+- Fix potential parse order issues, see: https://github.com/timkelty/craftcms-classmate/issues/2
