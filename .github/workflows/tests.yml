@@ -9,6 +9,6 @@ jobs:
         with:
           php-version: 7.4.2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
-      - uses: php-actions/composer@v5
+      - run: composer install
       - run: docker-compose up -d
       - uses: joelwmale/codeception-action@1.0.0
