@@ -3,5 +3,7 @@
   "array": ["foo", "bar", "baz"],
   "mixed": ["foo", "bar baz", "qux"],
   "messy": [" foo ", "bar  baz", " qux"],
-  "tailwind": "text-4xl tracking-tight mb-4"
+  "tailwind": "text-4xl tracking-tight mb-4",
+  "foo": "foo",
+  "bar": "bar"
 }

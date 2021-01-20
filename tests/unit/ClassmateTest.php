@@ -5,6 +5,7 @@ namespace timkelty\classmatetests\unit;
 use Codeception\Test\Unit;
 use craft\helpers\Html;
 use timkelty\craftcms\classmate\Classmate;
+use timkelty\craftcms\classmate\ClassmateFactory;
 use timkelty\craftcms\classmate\exceptions\KeyNotFoundException;
 use UnitTester;
 
@@ -118,5 +119,14 @@ class ClassmateTest extends Unit
     {
         $this->expectException(KeyNotFoundException::class);
         (new Classmate())->get('missing');
+    }
+
+    public function testItUsesAFactoryToFixParseOrder(): void
+    {
+        $classmate = new ClassmateFactory();
+        $foo = $classmate->get('foo');
+
+        $this->assertEquals(['bar'], $classmate->get('bar')->asClasses());
+        $this->assertEquals(['foo'], $foo->asClasses());
     }
 }

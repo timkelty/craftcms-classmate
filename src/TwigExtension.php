@@ -1,7 +1,7 @@
 <?php
 namespace timkelty\craftcms\classmate;
 
-use timkelty\craftcms\classmate\Classmate;
+use timkelty\craftcms\classmate\ClassmateFactory;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 
@@ -16,7 +16,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
     public function getGlobals(): array
     {
         return [
-            'classmate' => new Classmate(),
+            'classmate' => new ClassmateFactory(),
         ];
     }
 }
