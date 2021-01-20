@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v5
+      - uses: shivammathur/setup-php@v2
         with:
-          php_version: 7.4
-          version: 1
-          args: --ignore-platform-reqs
+          php-version: 7.4.2
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+      - uses: php-actions/composer@v5
       - run: docker-compose up -d
       - uses: joelwmale/codeception-action@1.0.0
