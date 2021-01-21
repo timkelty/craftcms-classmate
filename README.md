@@ -89,7 +89,7 @@ module.exports = {
 
 ## Classmate File
 
-Your Classmate file is a JSON file with a sinle object.
+Your Classmate file is a JSON file with a single object.
 The values can be space separated strings or arrays, or a combination of both.
 
 ```json
@@ -108,7 +108,7 @@ The values can be space separated strings or arrays, or a combination of both.
 }
 ```
 
-Since this is a simple JSON file, it is easily consumable by Javascript, too!
+Since this is just a JSON file, it is easily consumable by Javascript, too!
 
 ```js
 import classmate from "../../config/classmate.json";
