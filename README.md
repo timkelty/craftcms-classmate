@@ -224,6 +224,15 @@ Filter the current `ClassList`, removing those that match `$pattern`.
 {{ classmate.get('foo').notMatching('/^mb-/') }}
 ```
 
+### `replace(string $search, string $replace, bool $partial = false): Classmate`
+
+Replace `$search` with `$replace`. Set `$partial` to `true` to match partial strings, otherwise only complete matches will be replaced.
+
+```twig
+{{ classmate.get('foo').replace('text-red-500', 'text-red-100') }}
+{{ classmate.get('bar').replace('md:', 'lg:', true) }}
+```
+
 ### `prepend(string $string): Classmate`
 
 Prepend `$string` to each item in the `ClassList`.
