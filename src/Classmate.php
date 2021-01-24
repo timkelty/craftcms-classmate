@@ -26,6 +26,15 @@ class Classmate extends Component
     /**
      * @inheritdoc
      */
+    public function __construct($classes = [])
+    {
+        parent::__construct();
+        $this->classList = new ClassList($classes);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function init(): void
     {
         /** @var Settings */
@@ -33,7 +42,6 @@ class Classmate extends Component
 
         $filePath = Craft::parseEnv($settings->filePath);
         $this->definitions = $this->loadDefinitions($filePath);
-        $this->create();
     }
 
     public function __toString(): string
@@ -50,13 +58,6 @@ class Classmate extends Component
         return parent::__call($name, $args);
     }
 
-    public function create(): self
-    {
-        $this->classList = new ClassList();
-
-        return $this;
-    }
-
     public function get(string ...$keys): self
     {
         $classes = (new Collection($keys))->map(function ($key) {
@@ -69,7 +70,7 @@ class Classmate extends Component
             return $value;
         })->flatten()->all();
 
-        $this->create()->add(...$classes);
+        $this->add(...$classes);
 
         return $this;
     }
