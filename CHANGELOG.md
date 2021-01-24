@@ -40,3 +40,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Fixed
 
 - Fix potential parse order issues, see: https://github.com/timkelty/craftcms-classmate/issues/2
+
+## [1.1.0] - 2021-01-24
+
+### Added
+
+- Added replace method
