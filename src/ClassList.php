@@ -29,7 +29,7 @@ class ClassList extends Collection
         ->values();
     }
 
-    public function asAttributes(iterable $attributes = []): iterable
+    public function asAttributes(iterable $attributes = []): array
     {
         $attributes =  new Collection($attributes);
         $attributes->put('class', $this->asClasses());

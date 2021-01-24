@@ -182,7 +182,7 @@ Retrive an array of classes. Duplicates and empty values are removed.
 }) }}">
 ```
 
-### `asAttributes(iterable $attributes = []): iterable`
+### `asAttributes(iterable $attributes = []): array`
 
 Retreive an `attr`-compatible iterable, with `class` set, merged into any passed `$attributes`.
 
