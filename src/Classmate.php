@@ -120,6 +120,19 @@ class Classmate extends Component
         return $this->matching($pattern, true);
     }
 
+    public function replace(string $search, string $replace, bool $partial = false): self
+    {
+        $this->classList = $this->classList->map(function ($class) use ($search, $replace, $partial) {
+            if ($partial) {
+                return str_replace($search, $replace, $class);
+            }
+
+            return $search === $class ? $replace : $class;
+        });
+
+        return $this;
+    }
+
     public function prepend(string $string): self
     {
         $this->classList = $this->classList->map(function ($class) use ($string) {

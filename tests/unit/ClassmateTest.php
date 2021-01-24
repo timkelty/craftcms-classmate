@@ -90,6 +90,26 @@ class ClassmateTest extends Unit
         );
     }
 
+    public function testItCanReplaceClasses(): void
+    {
+        $this->assertEquals(
+            ['foo', 'qux', 'baz'],
+            (new Classmate(['foo', 'bar', 'baz']))
+                ->replace('bar', 'qux')->replace('fo', 'bo')->asClasses()
+        );
+    }
+
+    public function testItCanReplacePartialClasses(): void
+    {
+        $this->assertEquals(
+            ['group-hover:text-red-500', 'group-hover:font-bold'],
+            (new Classmate([
+                'hover:text-red-500',
+                'hover:font-bold'
+            ]))->replace('hover:', 'group-hover:', true)->asClasses()
+        );
+    }
+
     public function testItCanOutputAsString(): void
     {
         $this->assertEquals(
