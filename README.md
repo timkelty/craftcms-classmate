@@ -2,7 +2,7 @@
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=A5FPKHYV4GRTC)
 
-![Test Status](https://github.com/timkelty/craftcms-classmate/workflows/.github/workflows/tests.yml/badge.svg)
+![Test Status](https://github.com/timkelty/craftcms-classmate/workflows/tests/badge.svg)
 
 Classmate is here to help with HTML class composition and is especially useful when paired with a [utility-first](https://tailwindcss.com/docs/utility-first) css framework, such as [Tailwind CSS](http://tailwindcss.com/).
 
