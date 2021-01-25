@@ -7,7 +7,6 @@ paths:
   envs: tests/_envs
 bootstrap: _bootstrap.php
 params:
-  - env
   - tests/.env
 modules:
   config:
