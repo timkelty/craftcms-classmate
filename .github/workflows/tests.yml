@@ -31,16 +31,17 @@ jobs:
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v2
+
       - uses: shivammathur/setup-php@v2
         with:
           php-version: 7.4.2
           extensions: mbstring, intl, gd, imagick, zip, dom, mysql, pdo, pdo_mysql, fileinfo
+
       - run: composer install
 
       - name: Prepare the application
         run: cp .github/workflows/.env.mysql tests/.env
 
-      - run: docker-compose up -d
       - run: vendor/bin/codecept run
         env:
           SECURITY_KEY: abcde12345
