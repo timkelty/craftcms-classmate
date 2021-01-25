@@ -1,4 +1,4 @@
-name: Codeception Tests
+name: Codeception
 on: push
 jobs:
   test:
