@@ -11,4 +11,4 @@ jobs:
           extensions: mbstring, intl, gd, imagick, zip, dom, mysql, pdo, pdo_mysql, fileinfo
       - run: composer install
       - run: docker-compose up -d
-      - run: codecept run
+      - run: vendor/bin/codecept run
