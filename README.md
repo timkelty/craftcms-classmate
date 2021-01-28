@@ -268,6 +268,23 @@ composer require timkelty/craftcms-classmate
 
 ## Roadmap
 
+### How do I use Classmate classes in css?
+
+You can't! …yet.
+@markhuot alluded to this here: https://twitter.com/markhuot/status/1351605237736419329
+
+A Tailwind/Postcss plugin might allow something like:
+
+E.g. you write
+
+```css
+.prose a {
+  @classmate foo, bar;
+}
+```
+
+…to grab classes the same what that `classmate.get('foo', 'bar')` would.
+
 ### Arrow Functions
 
 I'd love to allow the use of arrow functions, but Twig currently doesn't allow it.
